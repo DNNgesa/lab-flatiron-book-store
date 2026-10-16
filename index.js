@@ -51,6 +51,11 @@ function init() {
         placeholder.remove();
     }
 
+    const headerTitle = document.getElementById('header');
+    if (headerTitle) {
+        headerTitle.textContent = bookStore.name;
+    }
+
     const bookList = document.getElementById('book-list');
     if (bookList) {
         bookStore.books.forEach((book) => {

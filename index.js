@@ -45,3 +45,39 @@ const bookStore = {
 
 // Write your code here!
 
+function init() {
+    const placeholder = document.getElementById('delete-this');
+    if (placeholder) {
+        placeholder.remove();
+    }
+
+    const bookList = document.getElementById('book-list');
+    if (bookList) {
+        bookStore.books.forEach((book) => {
+            const bookContainer = document.createElement('li');
+            const bookTitle = document.createElement('h3');
+            const bookAuthor = document.createElement('p');
+            const bookImage = document.createElement('img');
+
+            bookContainer.classList.add('list-li');
+
+            bookTitle.textContent = book.title;
+            bookAuthor.textContent = book.author;
+            bookImage.src = book.imageUrl;
+            bookImage.alt = book.title;
+
+            bookContainer.appendChild(bookTitle);
+            bookContainer.appendChild(bookAuthor);
+            bookContainer.appendChild(bookImage);
+
+            bookList.appendChild(bookContainer);
+        });
+    }
+}
+
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
